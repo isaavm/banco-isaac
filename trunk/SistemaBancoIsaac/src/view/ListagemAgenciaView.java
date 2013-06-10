@@ -4,48 +4,41 @@
  */
 package view;
 
-import collection.Agencias;
-import model.Agencia;
-import java.util.ArrayList;
-import java.util.Iterator;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JButton;
+import javax.swing.JTable;
 
 /**
  *
  * @author Isaac
  */
-public class ListaAgenciaView extends javax.swing.JFrame {
-
-    private Agencias agencias;
+public class ListagemAgenciaView extends javax.swing.JDialog {
 
     /**
-     * Creates new form ListaAgenciaView
+     * Creates new form ListagemAgenciaView
      */
-    public ListaAgenciaView(Agencias agencias) {
+    public ListagemAgenciaView() {
         initComponents();
-        setLocationRelativeTo(null);
-        this.agencias = agencias;
-        carregaAgencias((ArrayList) agencias.getAgencias());
+        setModal(true);
     }
 
-    public void carregaAgencias(ArrayList agencias) {
-        DefaultTableModel tm = new DefaultTableModel(
-                new Object[][]{},
-                new String[]{"Código", "Cidade", "UF"}) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        tm.setRowCount(0);
-        Iterator<Agencia>it = agencias.iterator();
-        while (it.hasNext()){
-            Agencia a = it.next();
-            String linha = a.toString();
-            String[] campos = linha.split(",");
-            tm.addRow(new Object[]{campos});
+    public JButton getBotaoEditar() {
+        return botaoEditar;
     }
-        jTable1.setModel(tm);
+
+    public JButton getBotaoExcluir() {
+        return botaoExcluir;
+    }
+
+    public JButton getBotaoFechar() {
+        return botaoFechar;
+    }
+
+    public JButton getBotaoNovo() {
+        return botaoNovo;
+    }
+
+    public JTable getTabAgencia() {
+        return tabAgencia;
     }
 
     /**
@@ -58,16 +51,16 @@ public class ListaAgenciaView extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabAgencia = new javax.swing.JTable();
         botaoNovo = new javax.swing.JButton();
         botaoEditar = new javax.swing.JButton();
         botaoExcluir = new javax.swing.JButton();
         botaoFechar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agências");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabAgencia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -75,7 +68,7 @@ public class ListaAgenciaView extends javax.swing.JFrame {
                 "Código", "Cidade", "UF"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabAgencia);
 
         botaoNovo.setText("Nova");
         botaoNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -133,20 +126,10 @@ public class ListaAgenciaView extends javax.swing.JFrame {
 
     private void botaoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoActionPerformed
         // TODO add your handling code here:
-        new InclusaoAgenciaView(agencias).setVisible(true);
     }//GEN-LAST:event_botaoNovoActionPerformed
 
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
         // TODO add your handling code here:
-        String age = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        Iterator<Agencia> ags = agencias.getAgencias().iterator();
-        Agencia a;
-        while(ags.hasNext()){
-            a=ags.next();
-            if(a.getCodigo().equals(age)){
-                agencias.equals(a);
-            }
-        }
     }//GEN-LAST:event_botaoExcluirActionPerformed
     /**
      * @param args the command line arguments
@@ -157,6 +140,6 @@ public class ListaAgenciaView extends javax.swing.JFrame {
     private javax.swing.JButton botaoFechar;
     private javax.swing.JButton botaoNovo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabAgencia;
     // End of variables declaration//GEN-END:variables
 }

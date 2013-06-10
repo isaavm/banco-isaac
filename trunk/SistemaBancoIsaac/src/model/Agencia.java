@@ -4,8 +4,10 @@
  */
 package model;
 
+import model.cliente.Cliente;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,7 +16,7 @@ import java.util.ArrayList;
 
 public class Agencia implements Serializable{
 
-    private ArrayList<Cliente> clientes;
+    private List<Cliente> clientes;
     private String uf;
     private String cidade;
     private String codigo;
@@ -27,11 +29,6 @@ public class Agencia implements Serializable{
         this.codigo = codigo;
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
-    
-    
     public void addCliente(Cliente c){
         clientes.add(c);
     }
@@ -39,18 +36,33 @@ public class Agencia implements Serializable{
         return clientes.size();
     }
 
-    public ArrayList<Cliente> getClientes() {
-        return clientes;
-    }
-
     public String getUf() {
         return uf;
     }
 
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    
     @Override
     public String toString() {
         return codigo + "," + cidade + "," + uf ;
     }
-    
-    
 }
