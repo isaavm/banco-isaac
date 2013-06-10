@@ -4,23 +4,33 @@
  */
 package view;
 
-import collection.Agencias;
+import javax.swing.JMenuItem;
 
 /**
  *
  * @author Isaac
  */
 public class PrincipalView extends javax.swing.JFrame {
-private Agencias agencias;
     /**
      * Creates new form PrincipalView
      */
     public PrincipalView() {
         initComponents();
-        setLocationRelativeTo(null);
-        agencias = new Agencias();
-        this.setVisible(true);
     }
+
+    public JMenuItem getItemAgencia() {
+        return itemAgencia;
+    }
+
+    public JMenuItem getItemDiretoria() {
+        return itemDiretoria;
+    }
+
+    public JMenuItem getItemGerente() {
+        return itemGerente;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,36 +42,36 @@ private Agencias agencias;
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        menuOpcoes = new javax.swing.JMenu();
+        itemAgencia = new javax.swing.JMenuItem();
+        itemDiretoria = new javax.swing.JMenuItem();
+        itemGerente = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Principal");
 
-        jMenu1.setText("Opções");
+        menuOpcoes.setText("Opções");
 
-        jMenuItem2.setText("Agências");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        itemAgencia.setText("Agências");
+        itemAgencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                itemAgenciaActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        menuOpcoes.add(itemAgencia);
 
-        jMenuItem1.setText("Diretoria");
-        jMenu1.add(jMenuItem1);
+        itemDiretoria.setText("Diretoria");
+        menuOpcoes.add(itemDiretoria);
 
-        jMenuItem3.setText("Gerentes");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        itemGerente.setText("Gerentes");
+        itemGerente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                itemGerenteActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        menuOpcoes.add(itemGerente);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuOpcoes);
 
         setJMenuBar(jMenuBar1);
 
@@ -79,54 +89,23 @@ private Agencias agencias;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void itemGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemGerenteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_itemGerenteActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void itemAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgenciaActionPerformed
         // TODO add your handling code here:
-        new ListaAgenciaView(agencias).setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_itemAgenciaActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PrincipalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PrincipalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PrincipalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PrincipalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PrincipalView().setVisible(true);
-            }
-        });
-    }
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem itemAgencia;
+    private javax.swing.JMenuItem itemDiretoria;
+    private javax.swing.JMenuItem itemGerente;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenu menuOpcoes;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package presenter;
 
 import interfaces.Autenticavel;
 
@@ -10,7 +10,7 @@ import interfaces.Autenticavel;
  *
  * @author Isaac
  */
-public class EfetuarLoginController {
+public class EfetuarLoginPresenter {
     Autenticavel usuario;
     
 }
