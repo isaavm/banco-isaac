@@ -18,7 +18,7 @@ public class Gerente extends Funcionario {
 
     private ICollection agencias;
 
-    public Gerente(Agencia ag, String nome, String endereco, long cpf, Date dataNascimento, String nomeUsuario, String senha) {
+    public Gerente(Agencia ag, String nome, String endereco, String cpf, Date dataNascimento, String nomeUsuario, String senha) {
         super(nome, endereco, cpf, dataNascimento, nomeUsuario, senha);
         agencias = new AgenciaCollection();
         agencias.incluir(ag);
