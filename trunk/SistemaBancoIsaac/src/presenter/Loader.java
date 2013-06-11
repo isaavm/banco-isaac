@@ -9,7 +9,8 @@ package presenter;
  * @author Isaac
  */
 public class Loader {
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         new PrincipalPresenter();
     }
 }

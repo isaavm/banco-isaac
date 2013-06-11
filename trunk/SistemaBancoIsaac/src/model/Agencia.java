@@ -8,6 +8,7 @@ import model.cliente.Cliente;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import model.funcionario.Gerente;
 
 /**
  *
@@ -17,6 +18,7 @@ import java.util.List;
 public class Agencia implements Serializable{
 
     private List<Cliente> clientes;
+    private List<Gerente> gerentes; //histórico gerentes
     private String uf;
     private String cidade;
     private String codigo;

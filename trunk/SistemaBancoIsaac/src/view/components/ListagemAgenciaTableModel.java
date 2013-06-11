@@ -40,20 +40,6 @@ public class ListagemAgenciaTableModel extends AbstractTableModel {
     }
 
     @Override
-    public String getColumnName(int column) {
-        String ret = null;
-        switch (column) {
-            case COL_CIDADE:
-                ret = "Cidade";
-            case COL_CODIGO:
-                ret = "Código";
-            case COL_UF:
-                ret = "UF";
-        }
-        return ret;
-    }
-
-    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Agencia ag = agencias.get(rowIndex);
         switch (columnIndex) {
