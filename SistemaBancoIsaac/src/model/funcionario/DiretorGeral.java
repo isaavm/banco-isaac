@@ -16,7 +16,7 @@ public class DiretorGeral extends Funcionario {
 
     private ICollection agencias;
 
-    public DiretorGeral(String nome, String endereco, long cpf, Date dataNascimento, String nomeUsuario, String senha) {
+    public DiretorGeral(String nome, String endereco, String cpf, Date dataNascimento, String nomeUsuario, String senha) {
         super(nome, endereco, cpf, dataNascimento, nomeUsuario, senha);
         this.agencias = new AgenciaCollection();
         calculaSalario();

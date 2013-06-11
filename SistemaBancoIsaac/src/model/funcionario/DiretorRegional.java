@@ -19,10 +19,9 @@ public class DiretorRegional extends Funcionario{
     private String regiao;
 
 
-    public DiretorRegional(Agencia ag,String nome, String endereco, long cpf, Date dataNascimento, String nomeUsuario, String senha) {
+    public DiretorRegional(String nome, String endereco, String cpf, Date dataNascimento, String nomeUsuario, String senha) {
         super(nome, endereco, cpf, dataNascimento, nomeUsuario, senha);
         this.agencias = new AgenciaCollection();
-        this.agencias.incluir(ag);
         this.regiao=null;
         calculaSalario();
     }    
