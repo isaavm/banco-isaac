@@ -7,6 +7,8 @@ package collection;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.funcionario.Funcionario;
 import persistense.IPersistencia;
 
@@ -49,7 +51,11 @@ public class FuncionarioCollection<T, I extends Serializable> implements Seriali
             funcionarios.remove((Funcionario) entity);
             banco.save(funcionarios);
         } else {
-            throw new Exception("Agencia inexistente");
+            try {
+                throw new Exception("Agencia inexistente");
+            } catch (Exception ex) {
+                Logger.getLogger(FuncionarioCollection.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 }

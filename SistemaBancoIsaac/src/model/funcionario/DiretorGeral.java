@@ -7,44 +7,25 @@ package model.funcionario;
 import collection.AgenciaCollection;
 import collection.ICollection;
 import java.util.Date;
-import model.Agencia;
 
 /**
  *
  * @author Isaac
  */
-public class DiretorRegional extends Funcionario{
+public class DiretorGeral extends Funcionario {
 
     private ICollection agencias;
-    private String regiao;
 
-
-    public DiretorRegional(Agencia ag,String nome, String endereco, long cpf, Date dataNascimento, String nomeUsuario, String senha) {
+    public DiretorGeral(String nome, String endereco, long cpf, Date dataNascimento, String nomeUsuario, String senha) {
         super(nome, endereco, cpf, dataNascimento, nomeUsuario, senha);
         this.agencias = new AgenciaCollection();
-        this.agencias.incluir(ag);
-        this.regiao=null;
         calculaSalario();
-    }    
+    }
 
     @Override
     protected void calculaSalario() {
         salarioTotal = SALARIOBASE + (0.1 * agencias.getAll().size());
     }
-
-    public void addAgencia(Agencia a) {
-        agencias.incluir(a);
-    }
-
-    public String getRegiao() {
-        return regiao;
-    }
-
-    public void setRegiao(String regiao) {
-        this.regiao = regiao;
-    }
-    
-    
 
     @Override
     public boolean autentica(int senha) {

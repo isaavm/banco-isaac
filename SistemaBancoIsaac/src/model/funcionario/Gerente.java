@@ -4,9 +4,10 @@
  */
 package model.funcionario;
 
+import collection.AgenciaCollection;
+import collection.ICollection;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.TreeSet;
 import model.Agencia;
 
 /**
@@ -14,29 +15,29 @@ import model.Agencia;
  * @author Isaac
  */
 public class Gerente extends Funcionario {
-    
-    private TreeSet<Agencia> agencias;
-    
+
+    private ICollection agencias;
+
     public Gerente(Agencia ag, String nome, String endereco, long cpf, Date dataNascimento, String nomeUsuario, String senha) {
         super(nome, endereco, cpf, dataNascimento, nomeUsuario, senha);
-        agencias = new TreeSet<>();
-        agencias.add(ag);
+        agencias = new AgenciaCollection();
+        agencias.incluir(ag);
         calculaSalario();
     }
-    
+
     @Override
     protected void calculaSalario() {
         int totalClientes = 0;
-        Iterator<Agencia> it = agencias.iterator();
+        Iterator<Agencia> it = agencias.getAll().iterator();
         while (it.hasNext()) {
             totalClientes += it.next().calculaNumClientes();
         }
         salarioTotal = SALARIOBASE + (0.01 * totalClientes) + calculaAdicional();
     }
-    
+
     private double calculaAdicional() {
         double ret = 0;
-        Iterator<Agencia> it = agencias.iterator();
+        Iterator<Agencia> it = agencias.getAll().iterator();
         while (it.hasNext()) {
             Agencia a = it.next();
             if (a.getUf().equals("AC")) {
@@ -123,15 +124,15 @@ public class Gerente extends Funcionario {
         }
         return ret;
     }
-    
+
     public void addAgencia(Agencia a) throws Exception {
-        if (agencias.size() <= 2) {
-            agencias.add(a);
+        if (agencias.getAll().size() <= 2) {
+            agencias.incluir(a);
         } else {
             throw new Exception("Numero maximo de agencias atingido");
         }
     }
-    
+
     @Override
     public boolean autentica(int senha) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
