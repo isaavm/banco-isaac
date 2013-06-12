@@ -17,11 +17,13 @@ import model.Agencia;
 public class Gerente extends Funcionario {
 
     private ICollection agencias;
+    private boolean isBlocked;
 
     public Gerente(Agencia ag, String nome, String endereco, String cpf, Date dataNascimento, String nomeUsuario, String senha) {
         super(nome, endereco, cpf, dataNascimento, nomeUsuario, senha);
         agencias = new AgenciaCollection();
         agencias.incluir(ag);
+        this.isBlocked = false;
         calculaSalario();
     }
 
@@ -125,12 +127,26 @@ public class Gerente extends Funcionario {
         return ret;
     }
 
+    public boolean isIsBlocked() {
+        return isBlocked;
+    }
+
+    public void setIsBlocked(boolean isBlocked) {
+        this.isBlocked = isBlocked;
+    }
+    
+    
+
     public void addAgencia(Agencia a) throws Exception {
         if (agencias.getAll().size() <= 2) {
             agencias.incluir(a);
         } else {
             throw new Exception("Numero maximo de agencias atingido");
         }
+    }
+    
+    public void removeAgencia(Agencia a){
+        agencias.excluir(a);
     }
 
     @Override

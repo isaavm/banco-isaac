@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.cliente.Cliente;
 import persistense.IPersistencia;
 
@@ -50,7 +52,11 @@ public class ClienteCollection<T, I extends Serializable> implements Serializabl
             clientes.remove((Cliente)entity);
             banco.save(clientes);
         } else {
-            throw new Exception("Agencia inexistente");
+            try {
+                throw new Exception("Agencia inexistente");
+            } catch (Exception ex) {
+                Logger.getLogger(ClienteCollection.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 }

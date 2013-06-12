@@ -43,22 +43,14 @@ public class PrincipalView extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         menuOpcoes = new javax.swing.JMenu();
-        itemAgencia = new javax.swing.JMenuItem();
         itemDiretoria = new javax.swing.JMenuItem();
         itemGerente = new javax.swing.JMenuItem();
+        itemAgencia = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Principal");
 
         menuOpcoes.setText("Opções");
-
-        itemAgencia.setText("Agências");
-        itemAgencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemAgenciaActionPerformed(evt);
-            }
-        });
-        menuOpcoes.add(itemAgencia);
 
         itemDiretoria.setText("Diretoria");
         menuOpcoes.add(itemDiretoria);
@@ -70,6 +62,14 @@ public class PrincipalView extends javax.swing.JFrame {
             }
         });
         menuOpcoes.add(itemGerente);
+
+        itemAgencia.setText("Agências");
+        itemAgencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAgenciaActionPerformed(evt);
+            }
+        });
+        menuOpcoes.add(itemAgencia);
 
         jMenuBar1.add(menuOpcoes);
 
