@@ -23,7 +23,7 @@ public class FuncionarioCollection<T, I extends Serializable> implements Seriali
 
     public FuncionarioCollection() {
         this.funcionarios = new ArrayList<>();
-        funcionarios = (ArrayList<Funcionario>) banco.getAll(Funcionario.class);
+        //  funcionarios = (ArrayList<Funcionario>) banco.getAll(Funcionario.class);
     }
 
     public void excluir(Funcionario a) throws Exception {
@@ -32,12 +32,19 @@ public class FuncionarioCollection<T, I extends Serializable> implements Seriali
     @Override
     public void incluir(T entity) {
         funcionarios.add((Funcionario) entity);
-        banco.save(funcionarios);
+        //     banco.save(funcionarios);
     }
 
     @Override
     public void editar(T entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Funcionario a = (Funcionario) entity;
+        for (int i = 0; i < funcionarios.size(); i++) {
+            if (funcionarios.get(i).getCpf().equals(a.getCpf())) {
+                funcionarios.remove(i);
+                funcionarios.add(a);
+                break;
+            }
+        }
     }
 
     @Override

@@ -5,6 +5,7 @@
 package presenter;
 
 import collection.AgenciaCollection;
+import collection.FuncionarioCollection;
 import collection.ICollection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +14,7 @@ import javax.swing.JFrame;
 import model.Agencia;
 import model.cliente.Cliente;
 import model.cliente.PessoaFisica;
+import model.funcionario.Funcionario;
 import view.PrincipalView;
 
 /**
@@ -22,12 +24,14 @@ import view.PrincipalView;
 public class PrincipalPresenter {
 
     private ICollection colecao;
+    private ICollection funcionarios;
 
     /**
      * @param args the command line arguments
      */
     public PrincipalPresenter() {
         colecao = new AgenciaCollection();
+        funcionarios = new FuncionarioCollection();
         Cliente c1 = new PessoaFisica(123456, new java.util.Date(), "João paulo", "Rua qualquer", "jão", "1234");
         Cliente c2 = new PessoaFisica(123456, new java.util.Date(), "Manel paulo", "Rua qualquer", "lolo", "1234");
         Cliente c3 = new PessoaFisica(123456, new java.util.Date(), "Luucas pereira paulo", "Rua tambem", "jpo", "1234");
@@ -70,10 +74,9 @@ public class PrincipalPresenter {
     }
 
     private void visualizaDiretoria() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private void visualizaGerencia() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        new CadastrarGerentePresenter(funcionarios, colecao);
     }
 }

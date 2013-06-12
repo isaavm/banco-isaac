@@ -4,10 +4,13 @@
  */
 package model;
 
+import collection.ICollection;
 import model.cliente.Cliente;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Stack;
 import model.funcionario.Gerente;
 
 /**
@@ -18,7 +21,7 @@ import model.funcionario.Gerente;
 public class Agencia implements Serializable{
 
     private List<Cliente> clientes;
-    private List<Gerente> gerentes; //histórico gerentes
+    private List<Gerente> gerentes; //histórico gerentes - Pilha
     private String uf;
     private String cidade;
     private String codigo;
@@ -26,11 +29,23 @@ public class Agencia implements Serializable{
     public Agencia(Cliente cliente, String uf, String cidade, String codigo) {
         this.clientes = new ArrayList<>();
         this.clientes.add(cliente);
+        this.gerentes = new Stack<>();
         this.uf = uf;
         this.cidade = cidade;
         this.codigo = codigo;
     }
 
+    public void addGerente(Gerente g, ICollection funcionarios){
+        if(gerentes.isEmpty()){
+        gerentes.add(g);
+        }else{
+            Gerente anterior = gerentes.get(gerentes.size()-1);
+            anterior.removeAgencia(this);
+            funcionarios.editar(anterior);
+            gerentes.add(g);
+        }
+    }
+    
     public void addCliente(Cliente c){
         clientes.add(c);
     }
