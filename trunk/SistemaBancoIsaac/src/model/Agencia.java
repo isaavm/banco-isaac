@@ -8,7 +8,6 @@ import collection.ICollection;
 import model.cliente.Cliente;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 import model.funcionario.Gerente;
@@ -17,8 +16,7 @@ import model.funcionario.Gerente;
  *
  * @author Isaac
  */
-
-public class Agencia implements Serializable{
+public class Agencia implements Serializable {
 
     private List<Cliente> clientes;
     private List<Gerente> gerentes; //histórico gerentes - Pilha
@@ -35,20 +33,37 @@ public class Agencia implements Serializable{
         this.codigo = codigo;
     }
 
-    public void addGerente(Gerente g, ICollection funcionarios){
-        if(gerentes.isEmpty()){
-        gerentes.add(g);
-        }else{
-            Gerente anterior = gerentes.get(gerentes.size()-1);
-            anterior.removeAgencia(this);
-            funcionarios.editar(anterior);
+    public void deixarSemGerente(ICollection funcionarios, ICollection agencias) {
+        Gerente ultimo = gerentes.get(gerentes.size() - 1);
+        if (ultimo != null) {
+            gerentes.add(null);
+            ultimo.removeAgencia(this);
+            funcionarios.editar(ultimo);
+            agencias.editar(this);
+        }
+
+    }
+
+    public void addGerente(Gerente g, ICollection funcionarios) {
+        if (gerentes.isEmpty()) {
             gerentes.add(g);
+        } else {
+            if (gerentes.get(gerentes.size() - 1) == null) {
+                gerentes.remove(gerentes.size() - 1);
+                gerentes.add(g);
+            } else {
+                Gerente anterior = gerentes.get(gerentes.size() - 1);
+                anterior.removeAgencia(this);
+                funcionarios.editar(anterior);
+                gerentes.add(g);
+            }
         }
     }
-    
-    public void addCliente(Cliente c){
+
+    public void addCliente(Cliente c) {
         clientes.add(c);
     }
+
     public int calculaNumClientes() {
         return clientes.size();
     }
@@ -77,9 +92,12 @@ public class Agencia implements Serializable{
         return codigo;
     }
 
-    
+    public List<Gerente> getGerentes() {
+        return gerentes;
+    }
+
     @Override
     public String toString() {
-        return codigo + "," + cidade + "," + uf ;
+        return codigo + "," + cidade + "," + uf;
     }
 }

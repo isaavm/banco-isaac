@@ -149,6 +149,12 @@ public class Gerente extends Funcionario {
         agencias.excluir(a);
     }
 
+    public AgenciaCollection getAgencias() {
+        return (AgenciaCollection) agencias;
+    }
+    
+    
+
     @Override
     public boolean autentica(int senha) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
