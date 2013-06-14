@@ -68,7 +68,30 @@ public abstract class Cliente implements Autenticavel, Serializable {
         return data;
     }
 
-    
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
     public void setNumTentativas(int numTentativas) {
         this.numTentativas = numTentativas;
     }
