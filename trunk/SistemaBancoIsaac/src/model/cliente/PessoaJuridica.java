@@ -11,22 +11,11 @@ import java.util.Date;
  * @author Isaac
  */
 public class PessoaJuridica extends Cliente {
-    private String cnpj;
-    private Date dataAbertura;
 
-    public PessoaJuridica(String cnpj, Date dataAbertura, String nome, String endereco, String nomeUsuario, String senha) {
-        super(nome, endereco, nomeUsuario, senha);
-        this.cnpj = cnpj;
-        this.dataAbertura = dataAbertura;
+    public PessoaJuridica(String documento, Date data, String nome, String endereco, String nomeUsuario, String senha) {
+        super(nome, endereco, nomeUsuario, senha, documento, data);
     }
 
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public Date getDataAbertura() {
-        return dataAbertura;
-    }
 
     @Override
     public boolean autentica(int senha) {

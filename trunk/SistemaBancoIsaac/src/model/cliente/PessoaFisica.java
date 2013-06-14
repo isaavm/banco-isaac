@@ -11,22 +11,12 @@ import java.util.Date;
  * @author Isaac
  */
 public class PessoaFisica extends Cliente{
-    private String cpf;
-    private Date dataNascimento;
+    
 
-    public PessoaFisica(String cpf, Date dataNascimento, String nome, String endereco, String nomeUsuario, String senha) {
-        super(nome, endereco, nomeUsuario, senha);
-        this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
+    public PessoaFisica(String documento, Date data, String nome, String endereco, String nomeUsuario, String senha) {
+        super(nome, endereco, nomeUsuario, senha, documento, data);
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
 
     @Override
     public boolean autentica(int senha) {
