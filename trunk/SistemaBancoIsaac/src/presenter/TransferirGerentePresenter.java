@@ -18,6 +18,11 @@ import view.TransferirGerenteView;
  *
  * @author Isaac
  */
+
+/*
+ * Na transferencia a agencia antiga fica com o gerente atual como null e a nova
+ * como o gerente da antiga
+ */
 public class TransferirGerentePresenter {
     
     private ICollection funcionarios, agencias;

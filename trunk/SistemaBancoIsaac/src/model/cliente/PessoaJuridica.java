@@ -4,7 +4,6 @@
  */
 package model.cliente;
 
-import model.cliente.Cliente;
 import java.util.Date;
 
 /**
@@ -12,16 +11,16 @@ import java.util.Date;
  * @author Isaac
  */
 public class PessoaJuridica extends Cliente {
-    private long cnpj;
+    private String cnpj;
     private Date dataAbertura;
 
-    public PessoaJuridica(long cnpj, Date dataAbertura, String nome, String endereco, String nomeUsuario, String senha) {
+    public PessoaJuridica(String cnpj, Date dataAbertura, String nome, String endereco, String nomeUsuario, String senha) {
         super(nome, endereco, nomeUsuario, senha);
         this.cnpj = cnpj;
         this.dataAbertura = dataAbertura;
     }
 
-    public long getCnpj() {
+    public String getCnpj() {
         return cnpj;
     }
 

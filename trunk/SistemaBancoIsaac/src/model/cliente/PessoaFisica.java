@@ -11,16 +11,16 @@ import java.util.Date;
  * @author Isaac
  */
 public class PessoaFisica extends Cliente{
-    private long cpf;
+    private String cpf;
     private Date dataNascimento;
 
-    public PessoaFisica(long cpf, Date dataNascimento, String nome, String endereco, String nomeUsuario, String senha) {
+    public PessoaFisica(String cpf, Date dataNascimento, String nome, String endereco, String nomeUsuario, String senha) {
         super(nome, endereco, nomeUsuario, senha);
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
     }
 
-    public long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
