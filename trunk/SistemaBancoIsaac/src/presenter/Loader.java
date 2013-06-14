@@ -11,6 +11,6 @@ package presenter;
 public class Loader {
 
     public static void main(String[] args) {
-        new PrincipalPresenter();
+        new LoginPresenter();
     }
 }

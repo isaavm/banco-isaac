@@ -4,6 +4,7 @@
  */
 package view;
 
+import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 /**
@@ -18,20 +19,6 @@ public class PrincipalView extends javax.swing.JFrame {
         initComponents();
     }
 
-    public JMenuItem getItemAgencia() {
-        return itemAgencia;
-    }
-
-    public JMenuItem getItemDiretoria() {
-        return itemDiretoria;
-    }
-
-    public JMenuItem getItemGerente() {
-        return itemGerente;
-    }
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,13 +29,117 @@ public class PrincipalView extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuOperacao = new javax.swing.JMenu();
+        ItemMenuSaque = new javax.swing.JMenuItem();
+        itemMenuDeposito = new javax.swing.JMenuItem();
+        itemMenuExtratoConta = new javax.swing.JMenuItem();
+        itemMenuRendimentos = new javax.swing.JMenuItem();
+        menuGerente = new javax.swing.JMenu();
+        cadastrarGerente = new javax.swing.JMenuItem();
+        consultarGerente = new javax.swing.JMenuItem();
+        desativarAcessoGerente = new javax.swing.JMenuItem();
+        transferirGerente = new javax.swing.JMenuItem();
+        menuDR = new javax.swing.JMenu();
+        cadastrarDR = new javax.swing.JMenuItem();
+        consultarDR = new javax.swing.JMenuItem();
+        menuCliente = new javax.swing.JMenu();
+        cadastrarCliente = new javax.swing.JMenuItem();
+        consultarCliente = new javax.swing.JMenuItem();
+        abrirContaCliente = new javax.swing.JMenuItem();
+        menuAgencia = new javax.swing.JMenu();
+        cadastrarAgencia = new javax.swing.JMenuItem();
+        consultarAgenci = new javax.swing.JMenuItem();
+        movimentacaoAgencia = new javax.swing.JMenuItem();
+        menuConta = new javax.swing.JMenu();
+        consultarConta = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Principal");
 
-        jMenu1.setText("File");
-        jMenuBar2.add(jMenu1);
+        menuOperacao.setText("Operações");
+
+        ItemMenuSaque.setText("Efetuar saque");
+        ItemMenuSaque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemMenuSaqueActionPerformed(evt);
+            }
+        });
+        menuOperacao.add(ItemMenuSaque);
+
+        itemMenuDeposito.setText("Efetuar depósito");
+        menuOperacao.add(itemMenuDeposito);
+
+        itemMenuExtratoConta.setText("Emitir extrato");
+        menuOperacao.add(itemMenuExtratoConta);
+
+        itemMenuRendimentos.setText("Consultar rendimentos");
+        menuOperacao.add(itemMenuRendimentos);
+
+        jMenuBar2.add(menuOperacao);
+
+        menuGerente.setText("Gerentes");
+
+        cadastrarGerente.setText("Cadastrar");
+        menuGerente.add(cadastrarGerente);
+
+        consultarGerente.setText("Consultar");
+        menuGerente.add(consultarGerente);
+
+        desativarAcessoGerente.setText("Desativar acesso");
+        menuGerente.add(desativarAcessoGerente);
+
+        transferirGerente.setText("Transferir");
+        menuGerente.add(transferirGerente);
+
+        jMenuBar2.add(menuGerente);
+
+        menuDR.setText("Diretores regionais");
+
+        cadastrarDR.setText("Cadastrar");
+        menuDR.add(cadastrarDR);
+
+        consultarDR.setText("Consultar");
+        menuDR.add(consultarDR);
+
+        jMenuBar2.add(menuDR);
+
+        menuCliente.setText("Clientes");
+
+        cadastrarCliente.setText("Cadastrar");
+        menuCliente.add(cadastrarCliente);
+
+        consultarCliente.setText("Consultar");
+        menuCliente.add(consultarCliente);
+
+        abrirContaCliente.setText("Abrir conta");
+        menuCliente.add(abrirContaCliente);
+
+        jMenuBar2.add(menuCliente);
+
+        menuAgencia.setText("Agencias");
+
+        cadastrarAgencia.setText("Cadastrar");
+        menuAgencia.add(cadastrarAgencia);
+
+        consultarAgenci.setText("Consultar");
+        consultarAgenci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarAgenciActionPerformed(evt);
+            }
+        });
+        menuAgencia.add(consultarAgenci);
+
+        movimentacaoAgencia.setText("Movimentação");
+        menuAgencia.add(movimentacaoAgencia);
+
+        jMenuBar2.add(menuAgencia);
+
+        menuConta.setText("Contas");
+
+        consultarConta.setText("Consultar");
+        menuConta.add(consultarConta);
+
+        jMenuBar2.add(menuConta);
 
         setJMenuBar(jMenuBar2);
 
@@ -66,12 +157,131 @@ public class PrincipalView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
- 
+    private void ItemMenuSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemMenuSaqueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ItemMenuSaqueActionPerformed
+
+    private void consultarAgenciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAgenciActionPerformed
+        // TODO add your handling code here:
+    }
+
+    public JMenuItem getItemMenuSaque() {
+        return ItemMenuSaque;
+    }
+
+    public JMenuItem getAbrirContaCliente() {
+        return abrirContaCliente;
+    }
+
+    public JMenuItem getCadastrarAgencia() {
+        return cadastrarAgencia;
+    }
+
+    public JMenuItem getCadastrarCliente() {
+        return cadastrarCliente;
+    }
+
+    public JMenuItem getCadastrarDR() {
+        return cadastrarDR;
+    }
+
+    public JMenuItem getCadastrarGerente() {
+        return cadastrarGerente;
+    }
+
+    public JMenuItem getConsultarAgenci() {
+        return consultarAgenci;
+    }
+
+    public JMenuItem getConsultarCliente() {
+        return consultarCliente;
+    }
+
+    public JMenuItem getConsultarConta() {
+        return consultarConta;
+    }
+
+    public JMenuItem getConsultarDR() {
+        return consultarDR;
+    }
+
+    public JMenuItem getConsultarGerente() {
+        return consultarGerente;
+    }
+
+    public JMenuItem getDesativarAcessoGerente() {
+        return desativarAcessoGerente;
+    }
+
+    public JMenuItem getItemMenuDeposito() {
+        return itemMenuDeposito;
+    }
+
+    public JMenuItem getItemMenuExtratoConta() {
+        return itemMenuExtratoConta;
+    }
+
+    public JMenuItem getItemMenuRendimentos() {
+        return itemMenuRendimentos;
+    }
+
+    public JMenu getMenuAgencia() {
+        return menuAgencia;
+    }
+
+    public JMenu getMenuCliente() {
+        return menuCliente;
+    }
+
+    public JMenu getMenuConta() {
+        return menuConta;
+    }
+
+    public JMenu getMenuDR() {
+        return menuDR;
+    }
+
+    public JMenu getMenuGerente() {
+        return menuGerente;
+    }
+
+    public JMenu getMenuOperacao() {
+        return menuOperacao;
+    }
+
+    public JMenuItem getMovimentacaoAgencia() {
+        return movimentacaoAgencia;
+    }
+
+    public JMenuItem getTransferirGerente() {
+        return transferirGerente;
+    }//GEN-LAST:event_consultarAgenciActionPerformed
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem ItemMenuSaque;
+    private javax.swing.JMenuItem abrirContaCliente;
+    private javax.swing.JMenuItem cadastrarAgencia;
+    private javax.swing.JMenuItem cadastrarCliente;
+    private javax.swing.JMenuItem cadastrarDR;
+    private javax.swing.JMenuItem cadastrarGerente;
+    private javax.swing.JMenuItem consultarAgenci;
+    private javax.swing.JMenuItem consultarCliente;
+    private javax.swing.JMenuItem consultarConta;
+    private javax.swing.JMenuItem consultarDR;
+    private javax.swing.JMenuItem consultarGerente;
+    private javax.swing.JMenuItem desativarAcessoGerente;
+    private javax.swing.JMenuItem itemMenuDeposito;
+    private javax.swing.JMenuItem itemMenuExtratoConta;
+    private javax.swing.JMenuItem itemMenuRendimentos;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenu menuAgencia;
+    private javax.swing.JMenu menuCliente;
+    private javax.swing.JMenu menuConta;
+    private javax.swing.JMenu menuDR;
+    private javax.swing.JMenu menuGerente;
+    private javax.swing.JMenu menuOperacao;
+    private javax.swing.JMenuItem movimentacaoAgencia;
+    private javax.swing.JMenuItem transferirGerente;
     // End of variables declaration//GEN-END:variables
 }
