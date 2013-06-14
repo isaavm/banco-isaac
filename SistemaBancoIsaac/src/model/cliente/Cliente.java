@@ -27,7 +27,7 @@ public abstract class Cliente implements Autenticavel, Serializable {
         this.numTentativas = 0;
     }
 
-    protected final boolean isBloqueado() {
+    public final boolean isBloqueado() {
         boolean ret = true;
         if (numTentativas < 3) {
             ret = false;
@@ -54,4 +54,10 @@ public abstract class Cliente implements Autenticavel, Serializable {
     public String getSenha() {
         return senha;
     }
+
+    public void setNumTentativas(int numTentativas) {
+        this.numTentativas = numTentativas;
+    }
+    
+    
 }
