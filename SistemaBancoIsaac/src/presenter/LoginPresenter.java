@@ -2,6 +2,7 @@ package presenter;
 
 import collection.ClienteCollection;
 import collection.FuncionarioCollection;
+import exceptions.FaltaPreencherCamposException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
@@ -20,6 +21,7 @@ public class LoginPresenter {
         this.view.setLocationRelativeTo(null);
         this.view.getRootPane().setDefaultButton(view.getBtnEntrar());
         this.view.pack();
+        this.view.setVisible(true);
 
     }
 
@@ -44,39 +46,43 @@ public class LoginPresenter {
     }
 
     private void entrar() {
-        boolean logou = false;
-        Iterator<Cliente> it = new ClienteCollection().getAll().iterator();
-        Cliente cli;
-        while (it.hasNext()) {
-            cli = it.next();
-            if (cli.getNomeUsuario().equals(view.getTxtLogin())) {
-                if (cli.autentica(Integer.parseInt(
-                        String.valueOf(view.getTxtPassSenha().getPassword())))) {
-                    logou = true;
-                    new PrincipalClientePresenter(cli);
-                }else{
-                    JOptionPane.showMessageDialog(view, "Senha incorreta!");
-                }
-            }
-        }
-        if (!logou) {
-            Funcionario fun;
-            Iterator<Funcionario> i = new FuncionarioCollection().getAll().iterator();
-            while (i.hasNext()) {
-                fun = i.next();
-                if (fun.getNomeUsuario().equals(view.getTxtLogin())) {
-                    if (fun.autentica(Integer.parseInt(
+        if (view.getTxtLogin().getText().isEmpty() || view.getTxtPassSenha().getPassword().length == 0) {
+            JOptionPane.showMessageDialog(view, new FaltaPreencherCamposException());
+        } else {
+            boolean logou = false;
+            Iterator<Cliente> it = new ClienteCollection().getAll().iterator();
+            Cliente cli;
+            while (it.hasNext()) {
+                cli = it.next();
+                if (cli.getNomeUsuario().equals(view.getTxtLogin())) {
+                    if (cli.autentica(Integer.parseInt(
                             String.valueOf(view.getTxtPassSenha().getPassword())))) {
                         logou = true;
-                        new PrincipalFuncionarioPresenter(fun);
-                    }else{
+                        new PrincipalClientePresenter(cli);
+                    } else {
                         JOptionPane.showMessageDialog(view, "Senha incorreta!");
                     }
                 }
             }
-        }
-        if (!logou){
-            JOptionPane.showMessageDialog(view, "Usuário inexistente");
+            if (!logou) {
+                Funcionario fun;
+                Iterator<Funcionario> i = new FuncionarioCollection().getAll().iterator();
+                while (i.hasNext()) {
+                    fun = i.next();
+                    if (fun.getNomeUsuario().equals(view.getTxtLogin())) {
+                        if (fun.autentica(Integer.parseInt(
+                                String.valueOf(view.getTxtPassSenha().getPassword())))) {
+                            logou = true;
+                            new PrincipalFuncionarioPresenter(fun);
+                        } else {
+                            JOptionPane.showMessageDialog(view, "Senha incorreta!");
+                        }
+                    }
+                }
+            }
+            if (!logou) {
+                JOptionPane.showMessageDialog(view, "Usuário inexistente");
+            }
         }
     }
 }

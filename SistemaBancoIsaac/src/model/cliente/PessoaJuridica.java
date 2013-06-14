@@ -16,11 +16,13 @@ public class PessoaJuridica extends Cliente {
         super(nome, endereco, nomeUsuario, senha, documento, data);
     }
 
-
     @Override
     public boolean autentica(int senha) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean ret = false;
+        String pass = String.valueOf(senha);
+        if (pass.equals(this.senha)) {
+            ret = true;
+        }
+        return ret;
     }
-    
-    
 }
