@@ -22,11 +22,11 @@ import view.InclusaoDiretorRegionalView;
  * @author Isaac
  */
 public class InclusaoDiretorRegionalPresenter {
-
+    
     private InclusaoDiretorRegionalView view;
     private ICollection funcionarios;
     private DiretorRegional fun;
-
+    
     public InclusaoDiretorRegionalPresenter(ICollection funcionarios, Funcionario fun) {
         this.funcionarios = funcionarios;
         this.view = new InclusaoDiretorRegionalView();
@@ -40,7 +40,7 @@ public class InclusaoDiretorRegionalPresenter {
         }
         view.setVisible(true);
     }
-
+    
     private void constroiEdicao() {
         view.getBotaoSalvar().setText("Editar");
         view.getCampoSenha().setEditable(false);
@@ -66,7 +66,7 @@ public class InclusaoDiretorRegionalPresenter {
             }
         });
     }
-
+    
     private void constroiInclusao() {
         view.getBotaoCancelar().addActionListener(new ActionListener() {
             @Override
@@ -80,21 +80,21 @@ public class InclusaoDiretorRegionalPresenter {
                 try {
                     salvar();
                 } catch (ParseException ex) {
-                    Logger.getLogger(InclusaoDiretorRegionalPresenter.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(view, ex.getMessage());
                 }
             }
         });
     }
-
+    
     private void editar() throws ParseException {
         String cpf = view.getCampoCpf().getText();
         Date data = new FormatadorData().convertToDate(view.getCampoDataNasc().getText());
         String end = view.getCampoEndereco().getText();
         String nome = view.getCampoNome().getText();
         String user = view.getCampoUsuario().getText();
-        if(cpf.equals("")||data.equals(null)||end.equals("")||nome.equals("")||user.equals("")){
+        if (cpf.equals("") || data.equals(null) || end.equals("") || nome.equals("") || user.equals("")) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos");
-        }else{
+        } else {
             fun.setCpf(cpf);
             fun.setDataNascimento(data);
             fun.setEndereco(end);
@@ -104,13 +104,13 @@ public class InclusaoDiretorRegionalPresenter {
             JOptionPane.showMessageDialog(view, "Funcionário editado com sucesso!");
             view.dispose();
         }
-
+        
     }
-
+    
     private void cancelar() {
         view.dispose();
     }
-
+    
     private void salvar() throws ParseException {
         String cpf = view.getCampoCpf().getText();
         Date data = new FormatadorData().convertToDate(view.getCampoDataNasc().getText());
@@ -118,15 +118,13 @@ public class InclusaoDiretorRegionalPresenter {
         String nome = view.getCampoNome().getText();
         String user = view.getCampoUsuario().getText();
         String senha = view.getCampoSenha().getText();
-        if(cpf.equals("")||data.equals(null)||end.equals("")||nome.equals("")||user.equals("")||senha.equals("")){
+        if (cpf.equals("") || data.equals(null) || end.equals("") || nome.equals("") || user.equals("") || senha.equals("")) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos");
-        }else{
+        } else {
             Funcionario f = new DiretorRegional(nome, end, cpf, data, nome, senha);
             funcionarios.incluir(f);
             JOptionPane.showMessageDialog(view, "Funcionário incluido com sucesso!");
             view.dispose();
         }
     }
-    
-    
 }
