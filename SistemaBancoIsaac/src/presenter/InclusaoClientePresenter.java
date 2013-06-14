@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
 import model.cliente.Cliente;
 import model.cliente.PessoaFisica;
 import model.cliente.PessoaJuridica;
+import model.funcionario.Funcionario;
+import model.funcionario.Gerente;
 import view.InclusaoClienteView;
 
 /**
@@ -26,13 +28,15 @@ public class InclusaoClientePresenter {
     private ICollection clientes;
     private Cliente clienteAtual;
     private InclusaoClienteView view;
+    private Funcionario funcionario;
 
     public static void main(String args[]) {/////////////////////////teste
-        new InclusaoClientePresenter(null, null).constroiInclusao();
+        new InclusaoClientePresenter(null, null, null).constroiInclusao();
     }
 
-    public InclusaoClientePresenter(ICollection clientes, Cliente clienteAtual) {
+    public InclusaoClientePresenter(ICollection clientes, Cliente clienteAtual, Funcionario fun) {
         this.clientes = clientes;
+        this.funcionario = funcionario;
         view = new InclusaoClienteView();
         view.setLocationRelativeTo(null);
         view.pack();
@@ -46,7 +50,20 @@ public class InclusaoClientePresenter {
     }
 
     private void constroiEdicao() {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if (funcionario instanceof Gerente) {
+            if (clienteAtual.isBloqueado()) {
+                view.getBotaoDesbloquear().setEnabled(true);
+                view.getBotaoDesbloquear().addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        new DesbloquearSenhaClientePresenter(clientes, clienteAtual);
+                    }
+                });
+            }
+            view.getBotaoSalvar().setText("Editar");
+            view.getCampoSenha().setEditable(false);
+            view.getCampoCpf().setText(clienteAtual.get);
+        }
     }
 
     private void constroiInclusao() {

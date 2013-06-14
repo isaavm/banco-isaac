@@ -23,5 +23,4 @@ public class DesbloquearSenhaClientePresenter {
         }
         colecao.editar(cliente);
     }
-    
 }
