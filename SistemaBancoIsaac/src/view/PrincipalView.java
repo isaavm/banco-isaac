@@ -41,39 +41,16 @@ public class PrincipalView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        menuOpcoes = new javax.swing.JMenu();
-        itemDiretoria = new javax.swing.JMenuItem();
-        itemGerente = new javax.swing.JMenuItem();
-        itemAgencia = new javax.swing.JMenuItem();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Principal");
 
-        menuOpcoes.setText("Opções");
+        jMenu1.setText("File");
+        jMenuBar2.add(jMenu1);
 
-        itemDiretoria.setText("Diretoria");
-        menuOpcoes.add(itemDiretoria);
-
-        itemGerente.setText("Gerentes");
-        itemGerente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemGerenteActionPerformed(evt);
-            }
-        });
-        menuOpcoes.add(itemGerente);
-
-        itemAgencia.setText("Agências");
-        itemAgencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemAgenciaActionPerformed(evt);
-            }
-        });
-        menuOpcoes.add(itemAgencia);
-
-        jMenuBar1.add(menuOpcoes);
-
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,23 +66,12 @@ public class PrincipalView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void itemGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemGerenteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemGerenteActionPerformed
-
-    private void itemAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemAgenciaActionPerformed
-
     /**
      * @param args the command line arguments
      */
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem itemAgencia;
-    private javax.swing.JMenuItem itemDiretoria;
-    private javax.swing.JMenuItem itemGerente;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu menuOpcoes;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar2;
     // End of variables declaration//GEN-END:variables
 }
