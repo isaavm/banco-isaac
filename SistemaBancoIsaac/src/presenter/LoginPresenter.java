@@ -2,7 +2,7 @@ package presenter;
 
 import collection.ClienteCollection;
 import collection.FuncionarioCollection;
-import exceptions.FaltaPreencherCamposException;
+import com.clickjr.controleestoque.exception.FaltaPreencherCamposException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Conta;
+import model.conta.Conta;
 import view.ConsultarContaView;
 
 public class ConsutarContaPresenter {

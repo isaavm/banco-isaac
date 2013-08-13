@@ -1,5 +1,6 @@
-package model;
+package model.conta;
 
+import model.Agencia;
 import model.cliente.Cliente;
 
 public class Conta {
