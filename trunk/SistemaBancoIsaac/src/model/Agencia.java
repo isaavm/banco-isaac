@@ -4,25 +4,40 @@
  */
 package model;
 
+import model.conta.Conta;
 import collection.ICollection;
 import model.cliente.Cliente;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import javax.persistence.Entity;
+import javax.persistence.*;
 import model.funcionario.Gerente;
 
 /**
  *
  * @author Isaac
  */
+@Entity(name="Agencia")
 public class Agencia implements Serializable {
 
+    @OneToMany()
     private List<Cliente> clientes;
+    @OneToOne
     private List<Gerente> gerentes; //histórico gerentes - Pilha
+    @OneToMany
+    private List<Conta> contas;
+    @Column
     private String uf;
+    @Column(nullable=false)
     private String cidade;
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private String codigo;
+
+    public Agencia() {
+    }
 
     public Agencia(Cliente cliente, String uf, String cidade, String codigo) {
         this.clientes = new ArrayList<>();

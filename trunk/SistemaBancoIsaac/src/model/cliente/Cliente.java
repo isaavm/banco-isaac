@@ -7,19 +7,29 @@ package model.cliente;
 import interfaces.Autenticavel;
 import java.io.Serializable;
 import java.util.Date;
-
+import javax.persistence.*;
 /**
  *
  * @author Isaac
  */
+@MappedSuperclass()
 public abstract class Cliente implements Autenticavel, Serializable {
 
+    @Column
     protected String nome;
+    @Column
     protected String endereco;
+    @Column
     protected String nomeUsuario;
+    @Column
     protected int numTentativas;
+    @Column
     protected String senha;
+    @Column
+    @Id()
     protected String documento;
+    @Column
+    @Temporal(javax.persistence.TemporalType.DATE)
     protected Date data;
 
     public Cliente(String nome, String endereco, String nomeUsuario, String senha, String documento, Date data) {

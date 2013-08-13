@@ -5,7 +5,7 @@
 package presenter;
 
 import collection.ICollection;
-import exceptions.FaltaPreencherCamposException;
+import com.clickjr.controleestoque.exception.FaltaPreencherCamposException;
 import formats.FormatadorData;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
